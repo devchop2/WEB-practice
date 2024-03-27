@@ -1,0 +1,81 @@
+*{
+    box-sizing: border-box;
+    
+}
+
+.pbox{
+    width:670px;
+    height:960px;
+    border: 1px solid #AACDFF;
+    
+    top: 60px;
+    left: 625px;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+}
+
+.cbox{
+    width: 470px;
+    height: 818px;
+}
+
+
+.mytitle{
+    color: #0068FF;
+    width: 466px;
+    height: 94px;
+    top:132px;
+    left:725px;
+    size:32px;
+    line-height: 47.36px;
+    
+}
+
+.myinput{
+    width: 466px;
+    top:366px;
+    left:725px;
+    border:1px solid #0068FF;
+    border-top:none;
+    border-left:  none;
+    border-right: none;
+    
+}
+
+.myinputtitle{
+    width:158px;
+    top:286px;
+    left:725px;
+    
+}
+
+.radiobox{
+    width: 466px;
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    
+}
+
+.btn{
+    width: 470px;
+    height: 75px;
+    border: 1px solid #0068FF;
+    border-radius: 10px;
+    font-size: 15px;
+    color: #0068FF;
+    background-color: transparent;
+}
+
+
+.radio{
+    width: 80px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
