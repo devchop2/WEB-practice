@@ -3,18 +3,23 @@
   <head>
     <title>TodoList</title>
     <link href="./styles/index.css" rel="stylesheet" />
-    <script src="./js/index.js"></script>
+    <script src="./js/index.js" defer></script>
   </head>
   <body>
     <div class="wrapper">
       <div class="wrapper__header">TODO</div>
       <div class="wrapper__list">
-        <ul class="body__list">
+        <ul class="body__list" id="todo-parent">
           <li><input type="checkbox" />item</li>
         </ul>
       </div>
       <div class="wrapper__adder">
-        <input type="text" class="adder__input" id="todo-input" />
+        <input
+          type="text"
+          class="adder__input"
+          id="todo-input"
+          onkeydown="onInputKey()"
+        />
         <button class="adder__button" onclick="onClickAdd()">추가</button>
       </div>
     </div>
