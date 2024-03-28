@@ -27,14 +27,19 @@ const onInputKey = () => {
 const createNewListItem = (addText) => {
   let li_tag = document.createElement("li");
   let checkbox = document.createElement("input");
-  checkbox.type = "checkbox";
-
   let spanTag = document.createElement("span");
+
   spanTag.textContent = addText;
+
+  checkbox.type = "checkbox";
+  checkbox.className = "todo__item__checkbox";
+  checkbox.onclick = () => {
+    spanTag.classList.toggle("span__complete");
+  };
 
   li_tag.appendChild(checkbox);
   li_tag.appendChild(spanTag);
-  li_tag.className = "sample";
+  li_tag.className = "todo__list";
   console.log(li_tag);
 
   // li_tag.textContent = addText;
