@@ -92,6 +92,7 @@ body {
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: space-between;
 }
 
 .todo__item__checkbox {
@@ -101,4 +102,13 @@ body {
 .span__complete {
   text-decoration: line-through;
   color: gray;
+}
+
+.todo__span {
+  width: 280px;
+  text-align: start;
+}
+.remove__button {
+  width: 80px;
+  height: 35px;
 }
