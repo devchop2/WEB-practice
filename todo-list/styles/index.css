@@ -10,6 +10,8 @@
 }
 body {
   background-color: azure;
+  background-size: cover;
+  background-image: url("../images/Clear.jpg");
   min-height: 100vh;
 }
 .wrapper {
@@ -28,6 +30,10 @@ body {
   height: 40px;
 
   font-size: 30px;
+  color: white;
+
+  text-shadow: 2px 2px gray;
+  opacity: 85%;
   text-align: center;
 }
 
@@ -35,8 +41,6 @@ body {
   max-width: 100%;
   width: 400px;
   min-height: 100px;
-
-  border: 1px solid gray;
 
   display: flex;
   flex-direction: column;
@@ -49,7 +53,7 @@ body {
   max-width: 100%;
   width: 400px;
   height: 100px;
-
+  opacity: 85%;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -59,7 +63,7 @@ body {
 
 #todo-parent {
   width: 100%;
-  background-color: lightyellow;
+
   list-style-type: none;
   padding: 0px;
 }
@@ -70,6 +74,8 @@ body {
 }
 .adder__button {
   width: 80px;
+  border: none;
+  border-radius: 5px;
 }
 
 #todo-input {
@@ -83,7 +89,7 @@ body {
 }
 
 .todo__list {
-  border-top: 1px solid rgb(242, 242, 242);
+  border-bottom: 1px solid rgb(242, 242, 242);
   font-size: 1.5rem;
   user-select: none;
   height: 50px;
@@ -93,6 +99,7 @@ body {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  opacity: 85%;
 }
 
 .todo__item__checkbox {
@@ -101,7 +108,8 @@ body {
 
 .span__complete {
   text-decoration: line-through;
-  color: gray;
+
+  opacity: 30%;
 }
 
 .todo__span {
@@ -111,4 +119,13 @@ body {
 .remove__button {
   width: 80px;
   height: 35px;
+  border: none;
+  background-color: rgb(242, 242, 242);
+  border-radius: 5px;
+}
+
+button:active {
+  box-shadow: none;
+  margin-left: 3px;
+  margin-top: 3px;
 }

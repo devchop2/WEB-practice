@@ -10,7 +10,7 @@ const saveFileName = "todo";
 
 //#region input event
 const onClickAdd = () => {
-  let addText = inputField.value;
+  let addText = inputField.value.trim();
   if (!addText) return;
 
   createNewListItem(addText, false);
@@ -113,15 +113,11 @@ const askForLocation = () => {
   navigator.geolocation.getCurrentPosition(weatherSearch);
 };
 
-const weatherSearch = (position, error) => {
-  console.log(position);
-  const positionObj = {
-    latitude: position.coords.latitude,
-    longitude: position.coords.longitude,
-  };
+const weatherSearch = ({ coords }) => {
+  const { latitude, longitude } = coords;
 
   const weather = fetch(
-    `https://api.openweathermap.org/data/2.5/weather?lat=${positionObj.latitude}&lon=${positionObj.longitude}&appid=f9ed09f6731e5a592c0c6fe1b505acae`
+    `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=f9ed09f6731e5a592c0c6fe1b505acae`
   )
     .then(onLoadWeather)
     .catch(onFailLoadWeather);
@@ -132,8 +128,30 @@ const onFailLoadWeather = (err) => {
 const onLoadWeather = (weather) => {
   weather.json().then((json) => {
     console.log(json);
-    console.log(`${json.name}, ${json.weather[0].description}`);
+
+    let format = { location: json.name, weather: json.weather[0].main };
+    updateWeatherTag(format);
   });
+};
+
+let weatherFiles = [
+  "Clear",
+  "Clouds",
+  "Drizzle",
+  "Fog",
+  "Rain",
+  "Snow",
+  "Thunderstorm",
+];
+const weatherNameTag = "location-tag";
+const updateWeatherTag = (obj) => {
+  let tag = document.getElementById(weatherNameTag);
+  tag.innerText = obj.location;
+  let imageName = obj.weather;
+  if (!weatherFiles.includes(obj.weather)) imageName = weatherFiles[3];
+
+  console.log("weatherName:" + obj.weather);
+  document.body.style.backgroundImage = `url("./images/${imageName}.jpg")`;
 };
 //#endregion
 //#region  Functions
