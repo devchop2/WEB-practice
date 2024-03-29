@@ -7,15 +7,6 @@ const completeClassName = "span__complete";
 const saveFileName = "todo";
 
 //#endregion
-const initList = () => {
-  let json = localStorage.getItem(saveFileName);
-  if (!json) return;
-  let saveItems = JSON.parse(json);
-
-  for (let i = 0; i < saveItems.length; i++) {
-    createNewListItem(saveItems[i].name, saveItems[i].complete);
-  }
-};
 
 //#region input event
 const onClickAdd = () => {
@@ -87,6 +78,16 @@ const deleteAll = () => {
 
 //#region  save
 
+const initList = () => {
+  let json = localStorage.getItem(saveFileName);
+  if (!json) return;
+  let saveItems = JSON.parse(json);
+
+  for (let i = 0; i < saveItems.length; i++) {
+    createNewListItem(saveItems[i].name, saveItems[i].complete);
+  }
+};
+
 const saveData = () => {
   const liList = listParent.querySelectorAll("li");
 
@@ -106,6 +107,36 @@ const saveData = () => {
 };
 //#endregion
 
+//#region  golocation & WeatherAPI
+
+const askForLocation = () => {
+  navigator.geolocation.getCurrentPosition(weatherSearch);
+};
+
+const weatherSearch = (position, error) => {
+  console.log(position);
+  const positionObj = {
+    latitude: position.coords.latitude,
+    longitude: position.coords.longitude,
+  };
+
+  const weather = fetch(
+    `https://api.openweathermap.org/data/2.5/weather?lat=${positionObj.latitude}&lon=${positionObj.longitude}&appid=f9ed09f6731e5a592c0c6fe1b505acae`
+  )
+    .then(onLoadWeather)
+    .catch(onFailLoadWeather);
+};
+const onFailLoadWeather = (err) => {
+  console.err("exception occurred." + err);
+};
+const onLoadWeather = (weather) => {
+  weather.json().then((json) => {
+    console.log(json);
+    console.log(`${json.name}, ${json.weather[0].description}`);
+  });
+};
+//#endregion
 //#region  Functions
 initList();
+askForLocation();
 //#endregion
